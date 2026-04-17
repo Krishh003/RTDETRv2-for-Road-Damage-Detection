@@ -1,0 +1,91 @@
+# ----- Deprecated folder -----
+RT-DETR/rtdetrv2_pytorch/deprecated/
+
+# ----- AI assistant & project meta files -----
+CLAUDE.md
+HANDOVER.md
+pothole_detection_report.md
+RT-DETR/rtdetrv2_pytorch/technical_report.md
+
+# ----- Checkpoints & model weights -----
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.onnx
+*.trt
+*.engine
+
+# ----- Datasets -----
+RT-DETR/rtdetrv2_pytorch/dataset/
+
+# ----- Training outputs -----
+RT-DETR/rtdetrv2_pytorch/output/
+RT-DETR/rtdetrv2_pytorch/output_onnx/
+
+# ----- Inference outputs -----
+RT-DETR/rtdetrv2_pytorch/inference_outputs/
+RT-DETR/rtdetrv2_pytorch/inference_outputs_low_thresh/
+RT-DETR/rtdetrv2_pytorch/xai_outputs/
+
+# ----- Python cache -----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ----- Virtual environments -----
+.venv/
+venv/
+env/
+.conda/
+
+# ----- Jupyter -----
+.ipynb_checkpoints/
+*.ipynb
+
+# ----- Secrets -----
+.env
+.env.*
+
+# ----- IDE / OS -----
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- Build / dist -----
+build/
+dist/
+*.egg-info/
+*.egg
+
+# ----- Logs -----
+*.log
+logs/
+
+# ----- LaTeX build artifacts -----
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# ----- Large binary/media files -----
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.pdf
+*.docx
+*.xlsx

@@ -1,0 +1,213 @@
+% ============================================================
+%  references.bib — RT-DETRv2 Road Damage Detection Paper
+%  CVIP submission
+% ============================================================
+
+% ---- Dataset ----
+
+@inproceedings{arya2022rdd,
+  author    = {Arya, Deeksha and Maeda, Hiroya and Ghosh, Sanjay Kumar
+               and Toshniwal, Durga and Sekimoto, Yoshihide},
+  title     = {{RDD2022}: A multi-national image dataset for automatic
+               road damage detection},
+  booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications
+               of Computer Vision (WACV)},
+  year      = {2022},
+  note      = {Dataset: \url{https://github.com/sekilab/RoadDamageDetector}}
+}
+
+@article{maeda2018rdd,
+  author  = {Maeda, Hiroya and Sekimoto, Yoshihide and Seto, Toshikazu
+             and Kashiyama, Takehiro and Omata, Hiroshi},
+  title   = {Road damage detection and classification using deep neural
+             networks with smartphone images},
+  journal = {Computer-Aided Civil and Infrastructure Engineering},
+  volume  = {33},
+  number  = {12},
+  pages   = {1127--1141},
+  year    = {2018}
+}
+
+% ---- Baseline: RDD-YOLO ----
+
+@article{rddyolo,
+  author  = {TODO},
+  title   = {TODO: fill from DOI 10.3390/applsci14033360 — RDD-YOLO paper},
+  journal = {Applied Sciences},
+  volume  = {14},
+  number  = {3360},
+  year    = {2024},
+  doi     = {10.3390/applsci14033360}
+}
+
+% ---- Transformer Detection ----
+
+@inproceedings{carion2020detr,
+  author    = {Carion, Nicolas and Massa, Francisco and Synnaeve, Gabriel
+               and Usunier, Nicolas and Kirillov, Alexander and Zagoruyko, Sergey},
+  title     = {End-to-end object detection with transformers},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  pages     = {213--229},
+  year      = {2020},
+  publisher = {Springer}
+}
+
+@inproceedings{zhu2021deformable,
+  author    = {Zhu, Xizhou and Su, Weijie and Lu, Lewei and Li, Bin
+               and Wang, Xiaogang and Dai, Jifeng},
+  title     = {Deformable {DETR}: Deformable transformers for end-to-end
+               object detection},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2021}
+}
+
+@inproceedings{lyu2023rtdetr,
+  author    = {Lyu, Wenyu and Xu, Yian and Zhao, Qingyao and Wang, Guanzhong
+               and Wei, Xingxing and Cui, Can and Lu, Yuning},
+  title     = {{DETRs} beat {YOLOs} on real-time object detection},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision
+               and Pattern Recognition (CVPR)},
+  year      = {2024}
+}
+
+@article{chen2024rtdetrv2,
+  author  = {Chen, Wenyu and Xu, Yian and Zhao, Qingyao and Lyu, Wenyu
+             and Wang, Guanzhong},
+  title   = {{RT-DETRv2}: Improved baseline with bag-of-freebies for
+             real-time detection transformer},
+  journal = {arXiv preprint arXiv:2407.17140},
+  year    = {2024}
+}
+
+% ---- YOLO-Series ----
+
+@software{jocher2023yolov8,
+  author  = {Jocher, Glenn and Chaurasia, Ayush and Qiu, Jing},
+  title   = {{Ultralytics YOLOv8}},
+  year    = {2023},
+  url     = {https://github.com/ultralytics/ultralytics},
+  version = {8.0.0}
+}
+
+% ---- CNN Components used in RDD-YOLO ----
+
+@inproceedings{han2020ghost,
+  author    = {Han, Kai and Wang, Yunhe and Tian, Qi and Guo, Jianyuan
+               and Xu, Chunjing and Xu, Chang},
+  title     = {{GhostNet}: More features from cheap operations},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {1580--1589},
+  year      = {2020}
+}
+
+@inproceedings{yang2021simam,
+  author    = {Yang, Lingxiao and Zhang, Ru-Yuan and Li, Lida and Xie, Xiaohua},
+  title     = {{SimAM}: A simple, parameter-free attention module for convolutional
+               neural networks},
+  booktitle = {Proceedings of the 38th International Conference on Machine Learning
+               (ICML)},
+  pages     = {11863--11874},
+  year      = {2021}
+}
+
+% ---- Explainability ----
+
+@inproceedings{selvaraju2017gradcam,
+  author    = {Selvaraju, Ramprasaath R. and Cogswell, Michael and Das, Abhishek
+               and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
+  title     = {{Grad-CAM}: Visual explanations from deep networks via
+               gradient-based localization},
+  booktitle = {IEEE International Conference on Computer Vision (ICCV)},
+  pages     = {618--626},
+  year      = {2017}
+}
+
+@inproceedings{muhammad2020eigencam,
+  author    = {Muhammad, Mohammed Bany and Yeasin, Mohammed},
+  title     = {{Eigen-CAM}: Class activation map using principal components},
+  booktitle = {2020 International Joint Conference on Neural Networks (IJCNN)},
+  pages     = {1--7},
+  year      = {2020}
+}
+
+@article{guo2025xai,
+  author  = {Guo, et al.},
+  title   = {A Data-Driven Framework for Explainable Artificial Intelligence
+             in Pavement Distress Analysis and Decision Support:
+             Integrating Clustering Models and Principal Component Analysis},
+  journal = {Structural Control and Health Monitoring},
+  year    = {2025},
+  publisher = {Wiley},
+  url     = {https://onlinelibrary.wiley.com/doi/abs/10.1155/stc/8852297}
+}
+
+% ---- Evaluation ----
+
+@inproceedings{lin2014coco,
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge
+               and Hays, James and Perona, Pietro and Ramanan, Deva
+               and Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  title     = {Microsoft {COCO}: Common objects in context},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  pages     = {740--755},
+  year      = {2014},
+  publisher = {Springer}
+}
+
+@software{fastercoco,
+  author  = {{MiXaiLL76}},
+  title   = {faster-coco-eval: {F}aster {COCO} evaluation metrics},
+  year    = {2024},
+  url     = {https://github.com/MiXaiLL76/faster_coco_eval},
+  note    = {Version 1.6.5. Apache 2.0 License.}
+}
+
+% ---- Transfer Learning / Fine-Tuning ----
+
+@article{zaidi2022survey,
+  author  = {Zaidi, Syed Sahil Abbas and Ansari, Mohammad Samar
+             and Aslam, Asra and Kanwal, Nadia and Asghar, Mamoona
+             and Lee, Brian},
+  title   = {A Survey of Modern Deep Learning based Object Detection Models},
+  journal = {Digital Signal Processing},
+  volume  = {126},
+  pages   = {103514},
+  year    = {2022},
+  doi     = {10.1016/j.dsp.2022.103514}
+}
+
+% ---- Multi-Scale Detection ----
+
+@inproceedings{lin2017fpn,
+  author    = {Lin, Tsung-Yi and Doll{\'a}r, Piotr and Girshick, Ross
+               and He, Kaiming and Hariharan, Bharath and Belongie, Serge},
+  title     = {Feature Pyramid Networks for Object Detection},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {2117--2125},
+  year      = {2017},
+  doi       = {10.1109/CVPR.2017.106}
+}
+
+% ---- Lightweight Detection ----
+
+@article{hu2025lightweight,
+  author  = {Hu, Yuanyuan and Chen, Ning and Hou, Yue and others},
+  title   = {Lightweight deep learning for real-time road distress detection
+             on mobile devices},
+  journal = {Nature Communications},
+  volume  = {16},
+  number  = {4212},
+  year    = {2025},
+  doi     = {10.1038/s41467-025-59516-5}
+}
+
+% ---- Safety / Motivation ----
+
+@techreport{who2023roads,
+  author      = {{World Health Organization}},
+  title       = {Global Status Report on Road Safety 2023},
+  institution = {World Health Organization},
+  year        = {2023},
+  isbn        = {978-92-4-008651-7},
+  url         = {https://www.who.int/publications/i/item/9789240086517}
+}

@@ -1,0 +1,112 @@
+% architecture.tex — RT-DETRv2 architecture diagram for inclusion in main.tex
+% Include with: \input{figures/architecture}
+%
+% Required packages in main.tex preamble:
+%   \usepackage{tikz}
+%   \usetikzlibrary{arrows.meta, positioning, fit, backgrounds, shapes.geometric}
+
+\begin{tikzpicture}[
+  font=\small,
+  >=Stealth,
+  % Block styles
+  backbone/.style={
+    draw, fill=blue!12, rounded corners=3pt,
+    minimum width=1.6cm, minimum height=0.65cm, align=center
+  },
+  encoder/.style={
+    draw, fill=orange!20, rounded corners=3pt,
+    minimum width=1.6cm, minimum height=0.65cm, align=center
+  },
+  decoder/.style={
+    draw, fill=green!15, rounded corners=3pt,
+    minimum width=1.6cm, minimum height=0.65cm, align=center
+  },
+  output/.style={
+    draw, fill=red!10, rounded corners=3pt,
+    minimum width=1.6cm, minimum height=0.65cm, align=center
+  },
+  arrow/.style={->, thick},
+  label/.style={font=\footnotesize\itshape, text=gray}
+]
+
+% ── Input image ──────────────────────────────────────────────────────────────
+\node[draw, fill=gray!10, rounded corners=3pt,
+      minimum width=1.2cm, minimum height=1.2cm, align=center] (img)
+      {Input\\480\texttimes480};
+
+% ── Backbone: PResNet18 ───────────────────────────────────────────────────────
+\node[backbone, right=0.8cm of img] (bb1) {PResNet18\\Stage 3\\(C3, S8)};
+\node[backbone, above=0.3cm of bb1] (bb2) {PResNet18\\Stage 4\\(C4, S16)};
+\node[backbone, above=0.3cm of bb2] (bb3) {PResNet18\\Stage 5\\(C5, S32)};
+
+% Backbone group label
+\node[label, left=0.05cm of bb1, rotate=90, anchor=south] {Backbone};
+
+% ── Encoder: AIFI + projection ───────────────────────────────────────────────
+\node[encoder, right=0.9cm of bb3] (aifi) {AIFI\\(S32)};
+\node[encoder, right=0.9cm of bb2] (proj) {Channel\\Projection};
+\node[encoder, right=0.9cm of bb1] (fpn)  {Feature\\Pyramid};
+
+% Encoder group label
+\node[label, above=0.1cm of aifi] {Hybrid Encoder};
+
+% ── Decoder ──────────────────────────────────────────────────────────────────
+\node[decoder, right=0.9cm of fpn, yshift=0.5cm] (dec1) {Deformable\\Attn L1};
+\node[decoder, above=0.25cm of dec1]              (dec2) {Deformable\\Attn L2};
+\node[decoder, above=0.25cm of dec2]              (dec3) {Deformable\\Attn L3};
+
+% Decoder group label
+\node[label, above=0.1cm of dec3] {Decoder (3 layers)};
+
+% Queries box
+\node[draw, fill=purple!10, rounded corners=3pt,
+      minimum width=1.2cm, minimum height=0.5cm, align=center,
+      left=0.4cm of dec1, yshift=0.75cm] (q) {100\\Queries};
+
+% ── Output heads ─────────────────────────────────────────────────────────────
+\node[output, right=0.9cm of dec2] (cls) {Class\\Score};
+\node[output, above=0.3cm of cls]  (box) {Box\\Coords};
+
+% ── Arrows: image -> backbone ─────────────────────────────────────────────────
+\draw[arrow] (img.east) -- ++(0.3,0) |- (bb1.west);
+\draw[arrow] (img.east) -- ++(0.3,0) |- (bb2.west);
+\draw[arrow] (img.east) -- ++(0.3,0) |- (bb3.west);
+
+% ── Arrows: backbone -> encoder ───────────────────────────────────────────────
+\draw[arrow] (bb3.east) -- (aifi.west);
+\draw[arrow] (bb2.east) -- (proj.west);
+\draw[arrow] (bb1.east) -- (fpn.west);
+\draw[arrow] (aifi.south) -- (proj.north);
+\draw[arrow] (proj.south) -- (fpn.north);
+
+% ── Arrows: encoder -> decoder ────────────────────────────────────────────────
+\draw[arrow] (fpn.east)  -- ++(0.3,0) |- (dec1.west);
+\draw[arrow] (proj.east) -- ++(0.3,0) |- (dec2.west);
+\draw[arrow] (aifi.east) -- ++(0.3,0) |- (dec3.west);
+
+% ── Queries -> decoder ────────────────────────────────────────────────────────
+\draw[arrow] (q.east) -- ++(0.15,0) |- (dec1.west);
+
+% ── Decoder chain ─────────────────────────────────────────────────────────────
+\draw[arrow] (dec1.north) -- (dec2.south);
+\draw[arrow] (dec2.north) -- (dec3.south);
+
+% ── Decoder -> output ─────────────────────────────────────────────────────────
+\draw[arrow] (dec3.east) -- ++(0.3,0) |- (box.west);
+\draw[arrow] (dec2.east) -- ++(0.3,0) |- (cls.west);
+
+% ── Background boxes (visual grouping) ───────────────────────────────────────
+\begin{scope}[on background layer]
+  \node[draw=blue!40, dashed, fill=blue!4, rounded corners=5pt,
+        fit=(bb1)(bb2)(bb3), inner sep=4pt] {};
+  \node[draw=orange!60, dashed, fill=orange!5, rounded corners=5pt,
+        fit=(aifi)(proj)(fpn), inner sep=4pt] {};
+  \node[draw=green!50, dashed, fill=green!5, rounded corners=5pt,
+        fit=(dec1)(dec2)(dec3)(q), inner sep=4pt] {};
+\end{scope}
+
+% ── Annotation: discrete cross-attention ─────────────────────────────────────
+\node[font=\tiny, text=gray, align=center, below=0.1cm of dec1]
+  {discrete cross-attn};
+
+\end{tikzpicture}

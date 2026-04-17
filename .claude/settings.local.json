@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(python diagnose_models.py)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:deepwiki.com)",
+      "Bash(python tools/train.py -c configs/rtdetrv2/rtdetrv2_r18vd_12h.yml -r output/rtdetrv2_r18vd_12h/best.pth --test-only)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/lyuwenyu/RT-DETR/refs/heads/main/rtdetrv2_pytorch/src/zoo/rtdetr/hybrid_encoder.py\" -o /tmp/official_hybrid_encoder.py)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/lyuwenyu/RT-DETR/refs/heads/main/rtdetrv2_pytorch/src/zoo/rtdetr/rtdetr.py\" -o /tmp/official_rtdetr.py)",
+      "Bash(python infer.py -c configs/rtdetrv2/rtdetrv2_r18vd_120e_coco.yml -w rtdetrv2_r18vd_120e_coco_rerun_48.1.pth -n 5)",
+      "Bash(python infer.py -c configs/rtdetrv2/rtdetrv2_r18vd_12h.yml -w output/rtdetrv2_r18vd_12h/best.pth -n 3)",
+      "Bash(python tools/train.py -c configs/rtdetrv2/rtdetrv2_r18vd_finetune_15e.yml -t rtdetrv2_r18vd_120e_coco_rerun_48.1.pth)",
+      "Bash(wc -l /c/Users/Krishh/Projects/RTDETR/RT-DETR/rtdetrv2_pytorch/src/**/*.py)",
+      "Bash(xargs wc:*)"
+    ]
+  }
+}
