@@ -7,6 +7,7 @@ Based on:
 - "RT-DETRv2: Improved Baseline with Bag-of-Freebies for Real-Time Detection Transformer" (arXiv:2407.17140)
 
 End Sem Implementation Video : https://drive.google.com/file/d/1M2Ex976rHahl7AGOspT9LGStQ21MxB-f/view?usp=drive_link
+
 Mid Sem Implementation Video : https://drive.google.com/file/d/1-jUqSflKGNJGC7V5RV6H5dY__pcSJGYF/view?usp=drive_link
 
 ---
